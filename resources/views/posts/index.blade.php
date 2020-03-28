@@ -1,9 +1,10 @@
 @extends('layout.app')
 @section('content')
-<div class="container m-3" style="position: absolute">
-<a  href="/posts/create" class="btn btn-success m-3" style="center">Create post</a> 
-
-<table class="table">
+<div class="col-xs-12 col-sm-12 col-md-12 text-center m-3">
+<a  href="/posts/create" class=" btn btn-success m-3" style="center">Create post</a> 
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12 text-center">
+<table class="table ">
   <thead>
     <tr>
       <th scope="col">PostNum</th>
@@ -37,12 +38,5 @@
   </tbody>
 </table>
 </div>
-<div class="col-sm-12">
 
-  @if(session()->get('success'))
-    <div class="alert alert-success">
-      {{ session()->get('success') }}  
-    </div>
-  @endif
-</div>
 @endsection
