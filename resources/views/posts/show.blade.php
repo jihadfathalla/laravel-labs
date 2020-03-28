@@ -24,4 +24,10 @@
   </div>
 </div>
 
+<div class="pull-right m-5">
+                <a class="btn btn-primary" href="/posts"> Back</a>
+            </div>
+        </div>
+    </div>
+
 @endsection

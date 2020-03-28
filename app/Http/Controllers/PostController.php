@@ -10,8 +10,10 @@ use App\ User;
 class PostController extends Controller
 {
     public function index()
-    {
-        $posts = Post::all(); //static fun
+{
+        $posts = Post::paginate(3);
+      //  $posts = Post::simplePaginate(3); 
+        //static fun
         //select * from posts
        // dd($posts);
             

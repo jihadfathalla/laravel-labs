@@ -37,6 +37,8 @@
     @endforeach
   </tbody>
 </table>
+<div class="col-xs-12 col-sm-12 col-md-12 text-center m-3">
+{{ $posts->links() }}
 </div>
-
+</div>
 @endsection
