@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ Post; //to use it's model
 use App\ User;
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
+
 
 
 class PostController extends Controller
@@ -52,15 +55,29 @@ class PostController extends Controller
     }
     
 
-    public function store()
+    public function store(StorePostRequest $request)
    { 
-     $request=request();
+     //$request=request();
    // dd($request->user_id);
+
+  /*  $validatedData = $request->validate([
+    'title' => 'required|min:3',
+    'descrabtion' => 'required|min:5',
+   ],[
+    'title.required' => 'Please enter the title field',
+    'title.min' => 'Please the title has minimum of 3 character ',
+    'descrabtion.required' => 'Please enter the descrabtion field',
+    'descrabtion.min' => 'Please the descrabtion has minimum of 3 character ',
+
+
+
+   ]); */
 
     Post::create([
       'title' => $request->title,
       'description' =>$request->descrabtion,
       'user_id' =>$request->user_id,
+
     ]);
 
    //  dd($request-> descrabtion, $request->title);
@@ -77,6 +94,7 @@ class PostController extends Controller
     $users = User::all();
 
  return view('posts.edit',[
+   
    'post'=>$post,'users'=>$users,
    ]);
     }
@@ -84,9 +102,9 @@ class PostController extends Controller
    
 
 
-public function update()
+public function update(UpdatePostRequest $request)
 {
-  $request=request();
+ 
   $post_id=$request->post;
   $post= Post::find($post_id); 
 

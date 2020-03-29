@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 @section('content')
 <div class="col-xs-12 col-sm-12 col-md-12 text-center m-3">
 <a  href="/posts/create" class=" btn btn-success m-3" style="center">Create post</a> 
@@ -12,7 +12,10 @@
       <th scope="col">Posted by</th>
       <th scope="col">Description</th>
       <th scope="col">Created_at</th>
+      <th scope="col">Slug</th>
+
       <th scope="col">Actions</th>
+
 
     </tr>
   </thead>
@@ -24,6 +27,7 @@
       <td>{{ $post->user ? $post->user->name : 'not exist'}}</td>
       <td>{{$post->description}}</td>
       <td>{{$post->created_at->toDateString()}}</td>
+      <td>{{$post->slug}}</td>
       <td><a href="/posts/{{$post->id}}" class="btn btn-info btn-sm">View </a>
       <a href="/posts/{{$post->id}}/edit" class="btn btn-primary btn-sm">Edit</a>
 <!--       <a href="/posts/{{$post->id}}/delete"class="btn btn-danger btn-sm" >Delete</a>

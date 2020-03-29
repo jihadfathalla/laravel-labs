@@ -16,11 +16,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['middleware' => 'auth'], function(){
+
 Route::get('/posts','PostController@index');
-Route::get('/posts/create','PostController@create');
+Route::get('/posts/create','PostController@create')->middleware('auth');
 Route::post('/posts','PostController@store');
 Route::GET('/posts/{post}/edit','PostController@edit');
 Route::post('/posts/{post}/','PostController@update')->name('posts.update');
 Route::get('/posts/{post}/delete','PostController@destroy');
 Route::get('/posts/{post}','PostController@show');
 
+});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

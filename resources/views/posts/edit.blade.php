@@ -1,9 +1,18 @@
-@extends('layout.app')
+@extends('layouts.app')
 @section('content')
 <div class="pull-right m-3">
 <h1 style="color:red">Edit Post</h1>
 </div>
 
+@if ($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+  @endif
     <form action="{{ route('posts.update',$post->id) }}" method="POST">
         @csrf
    
@@ -11,14 +20,16 @@
 
  <div class="form-group m-3">
     <label for="exampleInputEmail1">Title</label>
-    <input name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $post->title }}">
+    <input name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$post->title}}">
  </div>
 
 
  <div class="form-group m-3">
     <label for="exampleInputPassword1">Describtion</label>
     <textarea   name="description" class="form-control" >
-    {{ $post->description }}
+
+  {{$post->description}}
+
     </textarea>
   </div>
   <div class="form-group m-3">

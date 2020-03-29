@@ -1,11 +1,19 @@
-@extends('layout.app')
+@extends('layouts.app')
 @section('content')
 
 <div class="pull-right m-3">
 <h1 style="color:red"> Create Post  </h1>
 </div>
-
-<form method="post" action="/posts">
+@if ($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+  @endif
+<form method="POST" action="/posts">
 @csrf
   <div class="form-group m-3">
     <label for="exampleInputEmail1">Title</label>
@@ -26,10 +34,11 @@
   
 
   </div>
-  </form>
   <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-              <button type="submit" class="btn btn-success">Create</button>
+              <button type="submit" class="btn btn-success" >Create</button>
             </div>
+  </form>
+  
            
     <div class="pull-right m-3">
                 <a class="btn btn-primary" href="/posts"> Back</a>
